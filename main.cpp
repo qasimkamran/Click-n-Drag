@@ -31,6 +31,7 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 	{
 		if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 		{
+			mouseY = SCREEN_HEIGHT - mouseY;
 			obj->onClick(mouseX, mouseY);
 			activeObject = obj;
 			break;
@@ -52,12 +53,12 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 	if (activeObject != nullptr)
 	{
 		float deltaX = xpos - mouseX;
-		float deltaY = -1 * (ypos - mouseY);
+		float deltaY = (SCREEN_HEIGHT - ypos) - mouseY;
 
 		activeObject->onDrag(deltaX, deltaY);
 		
 		mouseX = xpos;
-		mouseY = ypos;
+		mouseY = SCREEN_HEIGHT - ypos;
 	}
 }
 
@@ -97,7 +98,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-
+		
 		for (auto &obj : squares)
 		{
 			obj->render();
