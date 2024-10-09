@@ -26,6 +26,7 @@ public:
 private:
 	float x, y, size;
 	bool selected = false;
+	float r, g, b;
 };
 
 #endif // SQUARE_H

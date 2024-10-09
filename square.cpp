@@ -7,14 +7,7 @@ Square::Square(float startX, float startY, float size)
 
 void Square::render()
 {
-	if (selected)
-	{
-		glColor3f(1.0f, 0.0f, 0.0f);
-	}
-	else
-	{
-		glColor3f(0.0f, 1.0f, 0.0f);
-	}
+	glColor3f(r, g, b);
 	glBegin(GL_QUADS);
 		glVertex2f(x, y);
 		glVertex2f(x + size, y);
@@ -52,5 +45,12 @@ void Square::onRelease()
 
 void Square::update(float deltaTime)
 {
-
+	if (selected)
+	{
+		r = 1.0f, g = 0.0f, b = 0.0f;
+	}
+	else
+	{
+		r = 0.0f, g = 1.0f, b = 0.0f;
+	}
 }

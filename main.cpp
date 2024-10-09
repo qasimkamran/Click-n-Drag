@@ -101,6 +101,7 @@ int main()
 		
 		for (auto &obj : squares)
 		{
+			obj->update(0);
 			obj->render();
 		}
 
