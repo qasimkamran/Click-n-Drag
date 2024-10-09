@@ -15,7 +15,6 @@ public:
 	virtual void onDrag(float x, float y) = 0;
 	virtual bool isMouseOver(float x, float y) = 0;
 	virtual void onRelease() = 0;
-
 };
 
 #endif // RENDERABLE_H

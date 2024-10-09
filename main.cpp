@@ -55,10 +55,20 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 		float deltaX = xpos - mouseX;
 		float deltaY = (SCREEN_HEIGHT - ypos) - mouseY;
 
-		activeObject->onDrag(deltaX, deltaY);
-		
 		mouseX = xpos;
 		mouseY = SCREEN_HEIGHT - ypos;
+
+		float projectedX = activeObject->getX() + deltaX;
+		float projectedY = activeObject->getY() + deltaY;
+		if (projectedX + activeObject->getSize() > SCREEN_WIDTH ||
+			projectedX < 0 ||
+			projectedY + activeObject->getSize() > SCREEN_HEIGHT ||
+			projectedY < 0)
+		{
+			return;
+		}
+
+		activeObject->onDrag(deltaX, deltaY);
 	}
 }
 

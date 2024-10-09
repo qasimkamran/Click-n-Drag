@@ -20,6 +20,7 @@ public:
 
 	float getX() { return x; };
 	float getY() { return y; };
+	float getSize() { return size; };
 
 	~Square() {}
 
